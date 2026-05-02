@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Student Assistant</title>
+</head>
+<body>
+    <h1>🎓 AI Student Assistant</h1>
+
+    <h3>Upload PDF</h3>
+    <form method="POST" enctype="multipart/form-data">
+        <input type="file" name="pdf">
+        <button type="submit">Upload</button>
+    </form>
+
+    <h3>Ask Question</h3>
+    <form method="POST">
+        <input type="text" name="question" size="50">
+        <button type="submit">Ask</button>
+    </form>
+
+    <h2>Answer:</h2>
+    <p>{{ answer }}</p>
+</body>
+</html>
