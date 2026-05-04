@@ -1,0 +1,8 @@
+flask
+gunicorn
+groq
+python-dotenv
+numpy
+PyPDF2
+sentence-transformers
+torch
