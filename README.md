@@ -63,5 +63,3 @@ AI Student Assistant Project
 
 
 
-or customize it based on your exact code files 👍
-
