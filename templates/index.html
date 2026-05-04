@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>AI Assistant</title>
+
+<style>
+body {
+    font-family: Arial;
+    background: #f4f6f8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.chat-box {
+    width: 400px;
+    background: white;
+    border-radius: 15px;
+    padding: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+}
+
+.messages {
+    height: 300px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.user {
+    background: #4caf50;
+    color: white;
+    padding: 8px;
+    border-radius: 10px;
+    margin: 5px 0;
+    text-align: right;
+}
+
+.bot {
+    background: #e0e0e0;
+    padding: 8px;
+    border-radius: 10px;
+    margin: 5px 0;
+    text-align: left;
+}
+
+input {
+    width: 70%;
+    padding: 8px;
+}
+
+button {
+    padding: 8px;
+    cursor: pointer;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="chat-box">
+
+    <div class="messages" id="chat"></div>
+
+    <input type="text" id="query" placeholder="Ask something...">
+
+    <button onclick="askAI()">Ask</button>
+    <button onclick="speakAnswer()">🔊 Speak</button>
+
+</div>
+
+<script>
+
+let latestAnswer = "";
+
+function addMessage(text, type) {
+    let div = document.createElement("div");
+    div.className = type;
+    div.innerText = text;
+    document.getElementById("chat").appendChild(div);
+}
+
+// Ask AI
+function askAI() {
+    let query = document.getElementById("query").value;
+
+    addMessage(query, "user");
+
+    fetch("/ask", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ query: query })
+    })
+    .then(res => res.json())
+    .then(data => {
+        latestAnswer = data.answer;
+
+        addMessage(data.answer, "bot");
+
+        document.getElementById("query").value = "";
+    });
+}
+
+// Speak
+function speakAnswer() {
+    if (!latestAnswer) return;
+
+    let speech = new SpeechSynthesisUtterance(latestAnswer);
+    speech.lang = "en-US";
+    window.speechSynthesis.speak(speech);
+}
+
+</script>
+
+</body>
+</html>
