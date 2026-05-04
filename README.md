@@ -55,8 +55,7 @@ Chat history saving
 Voice input support
 Multi-language support
 
-👩‍💻 Author:
-Your Name: Zonera Maqbool
+Name: Zonera Maqbool
 Roll No: 2k24/AI/107
 AI Student Assistant Project
 Deployment link: https://aistudentassistant-production.up.railway.app/
