@@ -1,6 +1,6 @@
 # AI_student_Assistant
 
-🤖 AI Student Assistant
+🤖 AI Student Assistant:
 An intelligent AI-powered student assistant built using Flask, LLMs, and optional RAG (Retrieval-Augmented Generation). This assistant can answer questions, assist with studies, and provide helpful explanations in a clean web interface.
 
 📌 Features:
